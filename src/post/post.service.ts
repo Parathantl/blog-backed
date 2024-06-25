@@ -44,6 +44,10 @@ export class PostService {
         myQuery.orderBy('post.title', query['sort'].toUpperCase()); // ASC or DESC
       }
 
+      if (queryKeys.includes('date')) {
+        myQuery.orderBy('post.createdOn', query['date'].toUpperCase()); // ASC or DESC
+      }
+
       // check if category is present, show only selected category items
       if (queryKeys.includes('category')) {
         myQuery.andWhere('category.title = :cat', { cat: query['category'] });
